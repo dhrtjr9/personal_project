@@ -28,3 +28,17 @@
     color: #3b3b3b;
     border: 1px solid #3b3b3b;
 }
+
+#login-wraper {
+
+    width: auto;
+    align-content: center;
+    margin: auto;
+}
+
+#register-wrap {
+
+    width: auto;
+    align-content: center;
+    margin: auto;
+}
