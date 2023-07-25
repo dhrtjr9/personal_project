@@ -1,5 +1,18 @@
 from flask import Flask, render_template, jsonify, request
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+# from import models
+import config
+
+db = SQLAlchemy()
+Migrate = Migrate()
+
 app = Flask(__name__)
+app.config.from_object(config)
+
+#orm
+db.init_app(app)
+Migrate.init_app(app, db)
 
 @app.route('/')
 def hello():
@@ -15,11 +28,23 @@ def cart():
 
 @app.route('/login')
 def login():
-    return render_template("login.html")
+    email_address = request.args.get('email_address')
+    passwd = request.args.get('passwd')
+    print(email_address, passwd)
 
-@app.route('/registerForm')
-def registerForm():
-    return render_template("login.registerForm.html")
+    # if email_address == 'dave@gmail.com' and passwd == '111':
+
+    #     return_data = {'auth': 'success'}
+    # else:
+    #     return_data = {'auth': 'failed'}
+    # return jsonify(return_data)
+    return render_template("login_rawtest.html")
+
+
+@app.route('/html_test')
+def hello_html():
+    # html file은 templates 폴더에 위치해야 함
+    return render_template('login_rawtest.html')
 
 if __name__ == '__main__':
     app.run()
