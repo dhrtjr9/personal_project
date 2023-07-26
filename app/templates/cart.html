@@ -6,21 +6,23 @@
     <title>Document</title>
 </head>
 <body>
-    < class="container">
+    <class="container">
         <h1>장바구니</h1>
         <table>
             <tr>
+                <th>상품번호</th>
+                <th>유저아이디</th>
                 <th>상품명</th>
-                <th>가격</th>
                 <th>수량</th>
+                <th>가격</th>
                 <th>합계</th>
             </tr>
-            {% for item in cart_items %}
+            {% for product in cart_product %}
                 <tr>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.price }}원</td>
-                    <td>{{ item.quantity }}개</td>
-                    <td>{{ item.price * item.quantity }}원</td>
+                    <td>{{ product.id }}</td>
+                    <td>{{ user.id }}원</td>
+                    <td>{{ product.quantity }}개</td>
+                    <td>{{ product.price * product.quantity }}원</td>
                 </tr>
             {% endfor %}
         </table>

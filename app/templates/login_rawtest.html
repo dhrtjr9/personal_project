@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -12,13 +12,14 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Jekyll v4.1.1" />
-    <title>Signin Template · Bootstrap</title>
+    <title>Woori bakery</title>
 
     <link
       rel="canonical"
       href="https://getbootstrap.com/docs/4.5/examples/sign-in/"
     />
 
+    <!-- Bootstrap core CSS -->
     <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <style>
@@ -37,25 +38,28 @@
         }
       }
     </style>
+    <!-- Custom styles for this template -->
     <link href="/static/signin.css" rel="stylesheet" />
   </head>
   <body class="text-center">
-    <form class="form-signin" method="get" action="/login">
+    <form class="form-signin" action="/login" method="get">
       <img
         class="mb-4"
-        src="/static/brand/bootstrap-solid.svg"
+        img src="/static/images/catlogo_1.png"
         alt=""
         width="72"
         height="72"
       />
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">
+          Please sign in<!--(현재 ID: {{ myid }}) -->
+      </h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input
         type="email"
         id="inputEmail"
         class="form-control"
         placeholder="Email address"
-        name="user_name"
+        name="email_address"
         required
         autofocus
       />
@@ -65,6 +69,7 @@
         id="inputPassword"
         class="form-control"
         placeholder="Password"
+        name="passwd"
         required
       />
       <div class="checkbox mb-3">
@@ -72,10 +77,10 @@
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Sign in
-      </button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="alert('등록 완료!')">등록하기</button>
+      <br>
+      <div class="read_bt"><a href="/register">회원가입</div>
+      <p class="mt-5 mb-3 text-muted">나는 자신이 없다. 코딩한테 질 자신이..</p>
     </form>
   </body>
-</html> -->
+</html>
