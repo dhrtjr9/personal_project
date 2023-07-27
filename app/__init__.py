@@ -36,9 +36,9 @@ def create_app():
     def about():
         return "about World!"
 
-    @app.route('/cart')
-    def cart():
-        return render_template("cart.html")
+    # @app.route('/cart')
+    # def cart():
+    #     return render_template("cart.html")
 
     # @app.route('/login', methods=['GET', 'POST'])
     # def login():

@@ -16,21 +16,43 @@ def hello():
 def about():
     return "about World!"
 
-@test.route('/cart')
-def cart():
-    products = [
-        Product(id=1, product_name='베이글 1', price=4800, quantity=1),
-        Product(id=2, product_name='베이글 2', price=5100, quantity=1),
-        Product(id=3, product_name='베이글 3', price=5500, quantity=1),
-        Product(id=4, product_name='베이글 4', price=4000, quantity=1),
-        Product(id=5, product_name='베이글 5', price=5000, quantity=1),
-        Product(id=6, product_name='베이글 6', price=6000, quantity=1),
-        Product(id=7, product_name='베이글 7', price=4500, quantity=1),
-        Product(id=8, product_name='베이글 8', price=5100, quantity=1)
-    ]
+@test.route('/cart/<int:id>')
+def cart(id):
+    form = ProductForm()
+    products = Product.query.get_or_404(id)
+    print(products)
+    return render_template('cart.html', products=products, form=form)
 
-    return render_template('product_page.html', products=products)
-    # return render_template("cart.html")
+@test.route('/kakaopay/<int:id>')
+def kakaopay(id):
+    form = ProductForm()
+    products = Product.query.get_or_404(id)
+    if form.validate_on_submit():
+        form.populate_obj(products)
+        db.session.commit()
+    return redirect(url_for('cart.html', products=products, form=form))
+
+
+    # # products = [
+    # #     Product(id=1, product_name='베이글 1', price=4800, quantity=1),
+    # #     Product(id=2, product_name='베이글 2', price=5100, quantity=1),
+    # #     Product(id=3, product_name='베이글 3', price=5500, quantity=1),
+    # #     Product(id=4, product_name='베이글 4', price=4000, quantity=1),
+    # #     Product(id=5, product_name='베이글 5', price=5000, quantity=1),
+    # #     Product(id=6, product_name='베이글 6', price=6000, quantity=1),
+    # #     Product(id=7, product_name='베이글 7', price=4500, quantity=1),
+    # #     Product(id=8, product_name='베이글 8', price=5100, quantity=1)
+    # # ]
+    # products = Product.query.get_or_404(id)
+    # if request.method == 'GET':  # POST 요청
+    #     form = ProductForm()
+    #     if form.validate_on_submit():
+    #         form.populate_obj(products)
+    #         db.session.commit()
+    #         return render_template('cart.html', products=products, form=form)
+    # else:  # GET 요청
+    #     form = ProductForm(obj=products)
+    # return render_template('cart.html', form=form)
 
 #데이터를 등록하기 위한 함수를 만들어야 한다.
 # @test.route('/login')
@@ -67,6 +89,7 @@ def login():
 						# 세션에 user_id라는 객체 생성
             session.clear()
             session['user_id'] = user.user_id
+            print(user.user_id)
             _next = request.args.get('next', '')
             if _next:
                 return redirect(_next)
