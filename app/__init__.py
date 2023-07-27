@@ -31,34 +31,34 @@ def create_app():
     def cart():
         return render_template("cart.html")
 
-    @app.route('/login', methods=['GET', 'POST'])
-    def login():
-        """Login Form"""
-        if request.method == 'GET':
-            return render_template('login_rawtest.html')
-        else:
-            name = request.form['user_id']
-            passw = request.form['password']
-            try:
-                data = User.query.filter_by(user_id=name, password=passw).first()
-                if data is not None:
-                    session['logged_in'] = True
-                    return redirect(url_for('index'))
-                else:
-                    return 'Dont Login'
-            except:
-                return "Dont Login"
-        # email_address = request.args.get('email_address')
-        # passwd = request.args.get('passwd')
-        # print(email_address, passwd)
+    # @app.route('/login', methods=['GET', 'POST'])
+    # def login():
+    #     """Login Form"""
+    #     if request.method == 'GET':
+    #         return render_template('login_rawtest.html')
+    #     else:
+    #         name = request.form['user_id']
+    #         passw = request.form['password']
+    #         try:
+    #             data = User.query.filter_by(user_id=name, password=passw).first()
+    #             if data is not None:
+    #                 session['logged_in'] = True
+    #                 return redirect(url_for('index'))
+    #             else:
+    #                 return 'Dont Login'
+    #         except:
+    #             return "Dont Login"
+    #     # email_address = request.args.get('email_address')
+    #     # passwd = request.args.get('passwd')
+    #     # print(email_address, passwd)
 
-        # if email_address == 'dave@gmail.com' and passwd == '111':
+    #     # if email_address == 'dave@gmail.com' and passwd == '111':
 
-        #     return_data = {'auth': 'success'}
-        # else:
-        #     return_data = {'auth': 'failed'}
-        # return jsonify(return_data)
-        # return render_template("login_rawtest.html")
+    #     #     return_data = {'auth': 'success'}
+    #     # else:
+    #     #     return_data = {'auth': 'failed'}
+    #     # return jsonify(return_data)
+    #     # return render_template("login_rawtest.html")
 
 
     @app.route('/html_test')

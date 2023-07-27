@@ -4,6 +4,9 @@
     margin: auto;
 }
 
+#types_text, #looking_text {
+    text-align:center;
+}
 .read_bt {
     width: 170px;
     margin: 0 auto;
@@ -42,3 +45,4 @@
     align-content: center;
     margin: auto;
 }
+

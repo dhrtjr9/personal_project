@@ -42,7 +42,8 @@
     <link href="/static/signin.css" rel="stylesheet" />
   </head>
   <body class="text-center">
-    <form class="form-signin" action="/login" method="get">
+    <form class="form-signin" method="post">
+      {{ form.csrf_token}}
       <img
         class="mb-4"
         img src="/static/images/catlogo_1.png"
@@ -59,7 +60,8 @@
         id="inputEmail"
         class="form-control"
         placeholder="Email address"
-        name="email_address"
+        name="user_id"
+        value="{{ form.user_id.data or ''}}"
         required
         autofocus
       />
@@ -69,7 +71,8 @@
         id="inputPassword"
         class="form-control"
         placeholder="Password"
-        name="passwd"
+        name="password"
+        value="{{ form.password.data or ''}}"
         required
       />
       <div class="checkbox mb-3">
@@ -77,7 +80,7 @@
           <input type="checkbox" value="remember-me" /> Remember me
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="alert('등록 완료!')">등록하기</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">등록하기</button>
       <br>
       <div class="read_bt"><a href="/register">회원가입</div>
       <p class="mt-5 mb-3 text-muted">나는 자신이 없다. 코딩한테 질 자신이..</p>
