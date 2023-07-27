@@ -1,9 +1,10 @@
 
 from flask import Blueprint, request, render_template, flash, url_for, session, g, redirect
-from app.models import User
+from app.models import User, Product
 from app import db
 import functools
 from ..forms import UserLoginForm
+from ..forms import ProductForm
 
 test = Blueprint('test', __name__, url_prefix='/')
 
@@ -17,7 +18,19 @@ def about():
 
 @test.route('/cart')
 def cart():
-    return render_template("cart.html")
+    products = [
+        Product(id=1, product_name='베이글 1', price=4800, quantity=1),
+        Product(id=2, product_name='베이글 2', price=5100, quantity=1),
+        Product(id=3, product_name='베이글 3', price=5500, quantity=1),
+        Product(id=4, product_name='베이글 4', price=4000, quantity=1),
+        Product(id=5, product_name='베이글 5', price=5000, quantity=1),
+        Product(id=6, product_name='베이글 6', price=6000, quantity=1),
+        Product(id=7, product_name='베이글 7', price=4500, quantity=1),
+        Product(id=8, product_name='베이글 8', price=5100, quantity=1)
+    ]
+
+    return render_template('product_page.html', products=products)
+    # return render_template("cart.html")
 
 #데이터를 등록하기 위한 함수를 만들어야 한다.
 # @test.route('/login')
